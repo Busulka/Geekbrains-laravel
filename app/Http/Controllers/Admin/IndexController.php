@@ -21,7 +21,7 @@ class IndexController extends Controller
          $request->flash();
          return redirect() ->route('admin.create');
         }
-        Storage::disk('local')->put('news.json', json_encode($news->getNews(), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+
     return view('admin.create', [
         'categories' => $category->getCategories()
     ]);
