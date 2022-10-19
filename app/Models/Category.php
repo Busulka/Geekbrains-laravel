@@ -15,6 +15,7 @@ class Category
             'title' => 'Политика',
             'slug' => 'politics'
         ],
+
     ];
 
     public function getCategoryNameBySlug($slug)

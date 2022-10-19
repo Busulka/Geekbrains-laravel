@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('title', 'Новости')
 
@@ -16,7 +16,12 @@
 
                            @forelse($news as $item)
                            <li class="list-group-item">
-                               <a href="{{ route('news.show', $item['id']) }}">{{ $item['title'] }}</a>
+                               <h2>{{ $item['title'] }}</h2>
+                               @if (!$item['isPrivate'])
+                                   <a href="{{ route('news.show', $item['id']) }}">Подробнее..</a>
+                               @else
+                                   <p>Зарегистрируйтесь для просмотра</p>
+                               @endif
                            </li>
                            @empty
                                <p>Нет новостей</p>

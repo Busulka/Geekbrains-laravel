@@ -6,16 +6,19 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Главная новости</a>
+                    <a class="nav-link {{ request()->routeIs('home')?'active':'' }}" href="{{ route('home') }}">Главная новости</a>
                 </li>
-                <li>
-                    <a class="nav-link" href="{{ route('admin.index') }}">Главная админка</a>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.index')?'active':'' }}" href="{{ route('admin.index') }}">Главная админка</a>
                 </li>
-                <li>
-                    <a class="nav-link"  href="{{ route('admin.test1') }}">test1</a>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.create')?'active':'' }}" href="{{ route('admin.create') }}">Добавить новость</a>
                 </li>
-                <li>
-                    <a class="nav-link" href="{{ route('admin.test2') }}">test2</a>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.test1')?'active':'' }}"  href="{{ route('admin.test1') }}">Скачать изображение</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.test2')?'active':'' }}" href="{{ route('admin.test2') }}">Скачать текст</a>
                 </li>
             </ul>
         </div>

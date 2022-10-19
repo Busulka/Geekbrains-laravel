@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('title', 'Категории')
 
@@ -18,7 +18,7 @@
 
                         @forelse($categories as $category)
                             <li class="list-group-item">
-                                <a href="{{ route('news.category.show', $category['slug']) }}">{{ $category['title'] }} </a>
+                                <h2><a class="text-decoration-none" href="{{ route('news.category.show', $category['slug']) }}">{{ $category['title'] }} </a></h2>
                             </li>
                         @empty
                             Нет категорий
