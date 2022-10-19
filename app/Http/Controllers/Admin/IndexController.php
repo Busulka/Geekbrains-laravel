@@ -21,8 +21,11 @@ class IndexController extends Controller
          $request->flash();
          return redirect() ->route('admin.create');
         }
+   //     $newsCreated = $request->except('_token');
+   //     Storage::disk('local')
+   //         ->put('news.json', json_encode($newsCreated, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 
-    return view('admin.create', [
+        return view('admin.create', [
         'categories' => $category->getCategories()
     ]);
     }

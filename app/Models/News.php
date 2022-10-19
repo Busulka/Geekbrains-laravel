@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Storage;
+
 class News
 {
     private Category $category;
@@ -34,6 +36,27 @@ class News
     {
         $this->category = $category;
     }
+
+  //  public function getNews(): array
+  //  {
+  //      return json_decode(Storage::disk('local')->get('news.json'), true);
+  //  }
+
+  //  public function saveNews($news): int
+  //  {
+  //      $news = $this->getNews();
+  //      $id = (array_key_last($newsArray)) + 1;
+
+  //      $news += array(
+  //          'id'=> $id,
+  //          'isPrivate' => array_key_exists('isPrivate', $news) ? '1' : '0');
+  //      $newsArray[] = $news;
+
+  //      Storage::disk('local')->put('news.json',
+  //          json_encode($newsArray, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+
+  //return $id;
+  //  }
 
     public function getNewsByCategorySlug($slug): array
     {
