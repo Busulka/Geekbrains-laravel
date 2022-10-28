@@ -2,53 +2,39 @@
 
 namespace App\Models;
 
-class Category
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
+
+class Category extends Model
 {
-    private array $categories = [
-        1 => [
-            'id' => 1,
-            'title' => 'Спорт',
-            'slug' => 'sport'
-        ],
-        2 => [
-            'id' => 2,
-            'title' => 'Политика',
-            'slug' => 'politics'
-        ],
+    use HasFactory;
 
-    ];
+    protected $fillable = ['title', 'slug'];
 
-    public function getCategoryNameBySlug($slug)
-    {
-        $id = $this->getCategoryIdBySlug($slug);
-        $category = $this->getCategoryById($id);
-        if ($category != [])
-            return $category['title'];
-        else return null;
-    }
-
-    public function getCategoryIdBySlug($slug)
-    {
-        $id = null;
-        foreach ($this->getCategories() as $category) {
-            if ($category['slug'] == $slug) {
-                $id = $category['id'];
-                break;
-            }
-        }
-        return $id;
+    public function news() {
+        return $this->hasMany(News::class);
     }
 
     public function getCategories(): array
     {
-        return $this->categories;
+        return DB::table('categories')->get()->toArray();
     }
 
-    public function getCategoryById($id)
+    public function getSlugById($id)
     {
-        if (array_key_exists($id, $this->getCategories()))
-            return $this->categories[$id];
-        else
-            return null;
+        return DB::table('categories')->where('id', '=', $id)->value('slug');
     }
+
+    public function getCategoryNameBySlug($slug)
+    {
+        return DB::table('categories')->where('slug', '=', $slug)->value('title');
+    }
+
+    public function getIdCategoryBySlug($slug)
+    {
+        return DB::table('categories')->where('slug', '=', $slug)->value('id');
+    }
+
 }

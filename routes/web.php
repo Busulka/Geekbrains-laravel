@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\News\CategoriesController;
+use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
-use App\Http\Controllers\NewsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +31,8 @@ Route::name('news.')
         Route::get('/one/{id}', [NewsController::class, 'show'])->name('show');
         Route::name('category.')
             ->group(function () {
-                Route::get('categories', [CategoryController::class, 'index'])->name('index');
-                Route::get('category/{slug}', [CategoryController::class, 'show'])->name('show');
+                Route::get('categories', [CategoriesController::class, 'index'])->name('index');
+                Route::get('category/{slug}', [CategoriesController::class, 'show'])->name('show');
             });
     });
 
