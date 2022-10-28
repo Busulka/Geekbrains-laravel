@@ -24,10 +24,10 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="newsCategory">Категория новости</label>
-                            <select class="form-select" name="category" id="newsCategory">
+                            <select class="form-select" name="category_id" id="newsCategory">
                                 @forelse($categories as $item)
-                                <option @if ($item['id'] == old('category')) selected
-                                        @endif value="{{ $item['id'] }}">{{ $item['title'] }}</option>
+                                <option @if ($item->id == old('category_id')) selected
+                                        @endif value="{{ $item->id }}">{{ $item->title }}</option>
                                 @empty
                                     <option value="0" selected>Нет категории</option>
                                 @endforelse

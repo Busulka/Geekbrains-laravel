@@ -7,15 +7,15 @@
 @endsection
 
 @section('content')
-    /
-    @if ($item)
-        @if (!$item['isPrivate'])
+
+    @if ($news)
+        @if (!$news['isPrivate'])
             <div class="container">
 
                 <div class="card">
-            <div class="card-header">{{ $item['title'] }}</div>
+            <div class="card-header">{{ $news['title'] }}</div>
                     <div class="card-body">
-                        <div>{{ $item['text'] }}</div>
+                        <div>{{ $news['text'] }}</div>
                     </div>
                 </div>
             </div>

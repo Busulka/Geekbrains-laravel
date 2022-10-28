@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
 
-                        @forelse($category as $item)
+                        @forelse($categories as $item)
                             <li class="list-group-item">
                                 <h2><a class="text-decoration-none" href="{{ route('news.category.show', $item['slug']) }}">{{ $item['title'] }} </a></h2>
                             </li>
