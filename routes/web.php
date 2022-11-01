@@ -6,9 +6,9 @@ use App\Http\Controllers\News\CategoriesController;
 use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
-use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 
 
 
@@ -41,27 +41,12 @@ Route::name('news.')
 
 
 
-Route::name('admin.')
-    ->prefix('admin')
-    ->namespace('Admin')
-    ->group(function () {
-        Route::get('/', [AdminIndexController::class, 'index'])->name('index');
-        Route::match(['get', 'post'], '/create', [AdminNewsController::class, 'create'])->name('create');
-        Route::match(['get', 'post'], '/edit/{news}', [AdminNewsController::class, 'edit'])->name('edit');
-        Route::match(['get', 'post'], '/export', [AdminNewsController::class, 'export'])->name('export');
-        Route::post('/update/{news}', [AdminNewsController::class, 'update'])->name('update');
-        Route::get('/destroy', [AdminNewsController::class, 'destroy'])->name('destroy');
-        Route::get('/test1', [AdminIndexController::class, 'test1'])->name('test1');
-        Route::get('/test2', [AdminIndexController::class, 'test2'])->name('test2');
-        Route::name('category.')
-            ->group(function () {
-                Route::get('/category', [AdminIndexController::class, 'categoryIndex'])->name('index');
-                Route::match(['get', 'post'],'/category/create', [AdminCategoryController::class, 'create'])->name('create');
-                Route::get('/category/edit/{category}',[AdminCategoryController::class, 'edit'])->name('edit');
-                Route::post('/category/update/{category}',[AdminCategoryController::class, 'update'])->name('update');
-                Route::get('/category/destroy',[AdminCategoryController::class, 'destroy'])->name('destroy');
-            });
-    });
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+    Route::get('/', AdminIndexController::class)
+        ->name('index');
+    Route::resource('categories', AdminCategoryController::class);
+    Route::resource('news', AdminNewsController::class);
+});
 
 
 Route::view('/about', 'about')->name('about');

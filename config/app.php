@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -211,6 +211,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ])->toArray(),
 

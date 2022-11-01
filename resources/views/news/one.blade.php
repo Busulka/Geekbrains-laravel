@@ -9,7 +9,7 @@
 @section('content')
 
     @if ($news)
-        @if (!$news['isPrivate'])
+        @if (!$news['is_private'])
             <div class="container">
 
                 <div class="card">
