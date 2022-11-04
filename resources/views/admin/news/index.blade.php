@@ -13,7 +13,7 @@
                     Новость</a>
             </div>
             <div class="card-body">
-  <table class="table table-striped table-sm">
+  <table class="table table-striped table-hover table-bordered table-sm">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -29,11 +29,11 @@
 
         @forelse ($newsList as $news)
         <tr>
-            <td>{{$news->id}}</td>
+            <th scope="row">{{$news->id}}</td>
             <td>{{$news->title}}</td>
             <td>{{$news->author}}</td>
             <td>{{$news->released_at}}</td>
-            <td>{{$news->rcreated_at}}</td>
+            <td>{{$news->created_at}}</td>
 
 
 

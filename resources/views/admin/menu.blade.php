@@ -23,6 +23,17 @@
                         Категории
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link  {{ request()->routeIs('admin.users.index')?'active':'' }}" href="{{ route('admin.users.index') }}">
+                        <span data-feather="list" class="align-text-bottom"></span>
+                        Пользователи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  {{ request()->routeIs('account')?'active':'' }}" href="{{ route('account') }}">
+                        <span data-feather="list" class="align-text-bottom"></span>
+                        Личный кабинет</a>
+                </li>
+
             </ul>
         </div>
     </div>
