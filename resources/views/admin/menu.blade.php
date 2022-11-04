@@ -12,13 +12,16 @@
                     <a class="nav-link {{ request()->routeIs('admin.index')?'active':'' }}" href="{{ route('admin.index') }}">Главная админка</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.create')?'active':'' }}" href="{{ route('admin.create') }}">Добавить новость</a>
+                <a class="nav-link @if(request()->routeis('admin.news.*')) active @endif" href="{{ route('admin.news.index')}}">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                    Новости
+                </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.test1')?'active':'' }}"  href="{{ route('admin.test1') }}">Скачать изображение</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.test2')?'active':'' }}" href="{{ route('admin.test2') }}">Скачать текст</a>
+                    <a class="nav-link @if(request()->routeis('admin.categories.*')) active @endif" href="{{ route('admin.categories.index')}}">
+                        <span data-feather="list" class="align-text-bottom"></span>
+                        Категории
+                    </a>
                 </li>
             </ul>
         </div>

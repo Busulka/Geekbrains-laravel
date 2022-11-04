@@ -10,10 +10,12 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category_id', 'title', 'description', 'text', 'is_private', 'image', 'created_at', 'updated_at'];
-
-    public function category(): Model|BelongsTo|null
+    protected $table ='news';
+    protected $dates = ['released_at'];
+    protected $fillable = ['category_id', 'title', 'description', 'text', 'is_private', 'author', 'image', 'released_at', 'created_at', 'updated_at'];
+    public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class);
     }
+
 }

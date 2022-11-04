@@ -17,7 +17,7 @@
                            @forelse($news as $item)
                            <li class="list-group-item">
                                <h2>{{ $item['title'] }}</h2>
-                               @if (!$item['isPrivate'])
+                               @if (!$item['is_private'])
                                    <a href="{{ route('news.show', $item['id']) }}">Подробнее..</a>
                                @else
                                    <p>Зарегистрируйтесь для просмотра</p>
