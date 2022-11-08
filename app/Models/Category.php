@@ -13,6 +13,8 @@ class Category extends Model
     protected $table = 'categories';
 
     public $timestamps = false;
+
+
     public function news() {
         return $this->hasMany(News::class, 'category_id', 'id');
     }
