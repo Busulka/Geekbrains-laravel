@@ -8,6 +8,9 @@
         <div class="card" >
             <div class="card-header"><h2>welcome, {{Auth::user()->name}} </h2></div>
             <div class="card-body">
+                @if(Auth::user()->avatar)
+                    <img src="{{ Auth::user()->avatar }}" style="width:200px;">
+                @endif
 
     <br>
     @if(Auth::user()->is_admin === true)
